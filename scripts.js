@@ -54,7 +54,11 @@ const newExpense = {
 
 function expenseAdd(newExpense) {
     try {
-        throw new Error("Erro de teste") // Simula um erro para testar o tratamento de erros
+// Crie o elemento de li para adicionar o item (li) na lista (ul).
+    const expenseItem = document.createElement("li")
+    expenseItem.classList.add("expense")
+
+    
     } catch (error) {
         alert("Nao foi possivel adicionar a despesa.")
         console.log(error)
