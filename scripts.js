@@ -111,16 +111,25 @@ updateTotals()
 
 //Atualiza os totais.
 function updateTotals() {
-    try {
-        //Recupera todos os itens (li) da lista (ul).
-        const itens = expenseList.children
+  try {
+    const items = expenseList.children;
 
-//Atualiza a quantidade de itens na lista.
-expensesQuantity.textContent = `${itens.length} ${itens.length > 1 ? "despesas" : "despesa"}`
+    // Atualiza quantidade de despesas
+    expensesQuantity.textContent = `${items.length} ${items.length > 1 ? "despesas" : "despesa"}`;
 
+    let total = 0;
 
-    } catch (error) {
-        console.log(error)
-        alert("Nao foi possivel atualizar os totais.")
+    // Percorre os itens e soma os valores
+    for (let i = 0; i < items.length; i++) {
+      const itemAmount = items[i].querySelector(".expense-amount").textContent;
+      const value = parseFloat(itemAmount.replace("R$", "").replace(".", "").replace(",", ".").trim());
+      total += value;
     }
+
+    // Exibe o total no console (ou pode atualizar em algum elemento)
+    console.log("Total:", formatCurrencyBRL(total));
+  } catch (error) {
+    console.error(error);
+    alert("Não foi possível atualizar os totais.");
+  }
 }
