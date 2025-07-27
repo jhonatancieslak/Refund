@@ -46,7 +46,17 @@ const newExpense = {
     category_name: category.options[category.selectedIndex].text,
     amount: amount.value,
     created_at: new Date(),
+ }
+ 
+ //Chama a funcao que ira adicionar o item a lista de despesas.
+ expenseAdd(newExpense)
 }
 
-console.log(newExpense)
+function expenseAdd(newExpense) {
+    try {
+        throw new Error("Erro de teste") // Simula um erro para testar o tratamento de erros
+    } catch (error) {
+        alert("Nao foi possivel adicionar a despesa.")
+        console.log(error)
+    }
 }
